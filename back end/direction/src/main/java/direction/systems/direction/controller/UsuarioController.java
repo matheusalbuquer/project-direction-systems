@@ -1,5 +1,6 @@
 package direction.systems.direction.controller;
 
+import direction.systems.direction.dtos.LoginRequest;
 import direction.systems.direction.entities.Usuario;
 import direction.systems.direction.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class UsuarioController {
   }
 
 
-  @PostMapping
+  @PostMapping("/cadastro")
   public ResponseEntity<Usuario> criar(@RequestBody Usuario usuario){
     Usuario novoUsuario = usuarioService.criar(usuario);
     return ResponseEntity.status(201).body(novoUsuario);
@@ -32,5 +33,22 @@ public class UsuarioController {
     return ResponseEntity.ok(usuarioService.listar());
   }
 
+
+  @GetMapping("/{id}")
+  public ResponseEntity<Usuario> buscar(@PathVariable Long id){
+    return ResponseEntity.ok(usuarioService.buscarPorId(id));
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> apagar (@PathVariable Long id){
+    usuarioService.apagar(id);
+    return ResponseEntity.noContent().build();
+  }
+
+  @PostMapping("/login")
+  public ResponseEntity<String> login(@RequestBody LoginRequest request){
+    String resposta = usuarioService.login(request.email(), request.senha());
+    return ResponseEntity.ok(resposta);
+  }
 
 }
