@@ -5,6 +5,8 @@ import direction.systems.direction.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UsuarioService {
 
@@ -15,11 +17,15 @@ public class UsuarioService {
     this.usuarioRepository = usuarioRepository;
   }
 
-
-
   public Usuario criar(Usuario usuario){
     return usuarioRepository.save(usuario);
   }
+
+
+  public List<Usuario> listar (){
+    return usuarioRepository.findAll();
+  }
+
 
 
 }

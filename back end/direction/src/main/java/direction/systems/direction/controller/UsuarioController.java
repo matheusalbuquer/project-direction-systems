@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
@@ -23,6 +25,11 @@ public class UsuarioController {
   public ResponseEntity<Usuario> criar(@RequestBody Usuario usuario){
     Usuario novoUsuario = usuarioService.criar(usuario);
     return ResponseEntity.status(201).body(novoUsuario);
+  }
+
+  @GetMapping
+  public ResponseEntity<List<Usuario>> listar (){
+    return ResponseEntity.ok(usuarioService.listar());
   }
 
 
