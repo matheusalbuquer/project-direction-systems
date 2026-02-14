@@ -8,6 +8,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProdutoService {
 
@@ -47,6 +49,38 @@ public class ProdutoService {
 
   }
 
+
+  public List<Produto> listar (){
+    Authentication authentication = autenticar();
+
+    if(authentication == null || !authentication.isAuthenticated()){
+      throw new IllegalStateException("Usuario não encontrado!");
+    }
+    String login = authentication.getName();
+
+
+   return produtoRepository.findByUsuarioEmail(login);
+  }
+
+  public Produto editar(Produto produto){
+    Authentication authentication = autenticar();
+
+    if(authentication == null || !authentication.isAuthenticated()){
+      throw new IllegalStateException("Usuario não encontrado");
+    }
+
+    String login = authentication.getName();
+
+    Produto produtoExistente = produtoRepository.findById(produto.getId())
+      .orElseThrow(() -> new IllegalStateException("Id do produto não encontrado!"));
+
+    produtoExistente.setNome(produto.getNome());
+    produtoExistente.setPreco(produto.getPreco());
+    produtoExistente.setQuantidade(produto.getQuantidade());
+    produtoExistente.setCategoria(produto.getCategoria());
+
+    return produtoRepository.save(produtoExistente);
+  }
 
   public void apagar(Long id){
 

@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/produto")
 public class ProdutoController {
@@ -21,6 +23,19 @@ public class ProdutoController {
   public ResponseEntity<Produto> criar(@RequestBody Produto produto){
     Produto novoProduto = produtoService.criar(produto);
     return ResponseEntity.status(201).body(novoProduto);
+  }
+
+  @GetMapping
+  public ResponseEntity<List<Produto>> listar(){
+    List<Produto> produtos = produtoService.listar();
+    return ResponseEntity.status(200).body(produtos);
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<Produto> editar(@PathVariable Long id, @RequestBody Produto produto){
+    produto.setId(id);
+    Produto produtoAtualizado = produtoService.editar(produto);
+    return ResponseEntity.ok(produtoAtualizado);
   }
 
   @DeleteMapping("/{id}")
