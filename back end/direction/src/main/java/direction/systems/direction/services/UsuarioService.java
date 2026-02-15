@@ -3,6 +3,8 @@ package direction.systems.direction.services;
 import direction.systems.direction.entities.Usuario;
 import direction.systems.direction.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -61,6 +63,21 @@ public class UsuarioService {
 
     throw new RuntimeException("Senha inválida");
     
+  }
+
+  public Usuario nomeUsuarioLogado(){
+    //Verifica
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+    //Valida
+    if (authentication == null || !authentication.isAuthenticated()) {
+      throw new IllegalArgumentException("Usuario nao encontrado");
+    }
+    String login = authentication.getName();
+
+    //Retorna
+    return usuarioRepository.findByEmail(login)
+      .orElseThrow(() -> new IllegalStateException("Usuario não encontrado!"));
   }
 
 

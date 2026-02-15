@@ -1,6 +1,7 @@
 package direction.systems.direction.controller;
 
 import direction.systems.direction.dtos.LoginRequest;
+import direction.systems.direction.dtos.LoginResponse;
 import direction.systems.direction.entities.Usuario;
 import direction.systems.direction.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,9 +47,14 @@ public class UsuarioController {
   }
 
   @PostMapping("/login")
-  public ResponseEntity<String> login(@RequestBody LoginRequest request){
-    String resposta = usuarioService.login(request.email(), request.senha());
-    return ResponseEntity.ok(resposta);
+  public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request){
+    String token = usuarioService.login(request.email(), request.senha());
+    return ResponseEntity.ok(new LoginResponse(token));
+  }
+
+  @GetMapping("/nome")
+  public ResponseEntity<Usuario> nomeUsuarioLogado (){
+    return ResponseEntity.ok(usuarioService.nomeUsuarioLogado());
   }
 
 }

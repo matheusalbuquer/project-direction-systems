@@ -23,17 +23,16 @@ form.addEventListener("submit", async function (e) {
       throw new Error("Erro no login");
     }
 
-    const data = await response.text();
+    // 🔥 Correção aqui
+    const data = await response.json();
 
-    // Salva o token
     localStorage.setItem("token", data.token);
 
     message.style.color = "green";
     message.textContent = "Login realizado com sucesso!";
 
-    // Redireciona (opcional)
     setTimeout(() => {
-      window.location.href = "dashboard.html";
+      window.location.href = "dashboard/dashboard.html";
     }, 1000);
   } catch (error) {
     message.style.color = "red";
