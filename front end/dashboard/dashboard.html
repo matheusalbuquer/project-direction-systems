@@ -1,21 +1,55 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="dashboard.css" />
-    <title>Document</title>
+    <title>Dashboard</title>
   </head>
   <body>
     <header>
-      <div class="cabecalho">
-        <img src="../imgs/image.png" alt="direction imagem" />
+      <div class="header-container">
+        <div class="header-left">
+          <img src="../imgs/image.png" alt="Logo" />
+          <div>
+            <span class="welcome-text">Bem-vindo,</span>
+            <strong id="usuarioNome"></strong>
+          </div>
+        </div>
+
+        <button class="btn-sair" onclick="logout()">Sair</button>
       </div>
     </header>
 
-    <br />
-    <h2>Produtos</h2>
-    <div id="listaProdutos"></div>
+    <main class="container">
+      <div class="topo">
+        <h2>Produtos</h2>
+        <button class="btn-adicionar" onclick="abrirModal()">
+          + Adicionar Produto
+        </button>
+      </div>
+
+      <div id="listaProdutos" class="grid-produtos"></div>
+    </main>
+
+    <!-- MODAL -->
+    <div id="modalProduto" class="modal">
+      <div class="modal-content">
+        <h2 id="modalTitulo">Produto</h2>
+
+        <input type="text" id="nomeProduto" placeholder="Nome do produto" />
+        <input type="text" id="categoriaProduto" placeholder="Categoria" />
+        <input type="number" id="precoProduto" placeholder="Preço" />
+        <input type="number" id="quantidadeProduto" placeholder="Quantidade" />
+
+        <div class="modal-buttons">
+          <button onclick="salvarProduto()" class="btn-salvar">Salvar</button>
+          <button onclick="fecharModal()" class="btn-cancelar">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <
   </body>
-  <script src="dashboard.js"></script>
 </html>

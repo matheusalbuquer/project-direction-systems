@@ -1,49 +1,222 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* RESET */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
 }
 
-/* HEADER */
-.cabecalho {
-  width: 100%;
-  height: 120px;
-  background-color: rgb(13, 134, 13);
+header {
+  background: linear-gradient(90deg, #1e9c1e, #167d16);
+  padding: 15px 40px;
+  color: white;
+}
 
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
   display: flex;
   align-items: center;
-  justify-content: center; /* CENTRALIZA */
+  gap: 15px;
 }
 
-.cabecalho img {
-  width: 200px;
-  max-width: 80%; /* evita quebrar no celular */
+.header-left img {
+  width: 45px;
 }
 
-/* CONTAINER PRINCIPAL */
+.welcome-text {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.btn-sair {
+  background-color: #e74c3c;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-sair:hover {
+  background-color: #c0392b;
+}
+
+/*contaoienr*/
+
 .container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
+  padding: 40px;
 }
 
-/* GRID DE PRODUTOS */
-.gridProdutos {
+/*topo*/
+
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.topo h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.btn-adicionar {
+  background-color: #1e9c1e;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-adicionar:hover {
+  background-color: #167d16;
+  transform: translateY(-2px);
+}
+
+/*prduot*/
+
+.grid-produtos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
-  margin-top: 20px;
 }
 
-/* CARD PRODUTO */
-.cardProduto {
+.card-produto {
   background: white;
-  padding: 15px;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+}
+
+.card-produto:hover {
+  transform: translateY(-5px);
+}
+
+.card-produto h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.card-produto p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+/*botaps*/
+
+.btn-editar {
+  background-color: #3498db;
+  border: none;
+  padding: 7px 14px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+  cursor: pointer;
+  margin-top: 12px;
+  margin-right: 8px;
+  transition: 0.3s;
+}
+
+.btn-editar:hover {
+  background-color: #2980b9;
+}
+
+.btn-apagar {
+  background-color: #e74c3c;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: 0.3s;
+}
+
+.btn-apagar:hover {
+  background-color: #c0392b;
+}
+
+/*modal */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.modal-content input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.modal-content input:focus {
+  outline: none;
+  border-color: #1e9c1e;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.btn-salvar {
+  background-color: #1e9c1e;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-cancelar {
+  background-color: #999;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
