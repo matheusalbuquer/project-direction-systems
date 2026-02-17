@@ -31,10 +31,6 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background: #45d845;
-}
-
 .link-conta {
   display: block;
   margin-bottom: 20px;
@@ -42,6 +38,10 @@ button:hover {
   color: #764ba2;
   text-decoration: none;
 }
+button:hover {
+  background: #45d845;
+}
+
 #message {
   margin-top: 10px;
   font-weight: bold;

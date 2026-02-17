@@ -3,13 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <title>Login</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="cadastro.css" />
   </head>
   <body>
     <div class="login-container">
-      <h2>Login</h2>
+      <h2>Cadastro</h2>
 
-      <form id="loginForm">
+      <form id="cadastroForm">
+        <input type="nome" id="nome" placeholder="Digite seu nome" required />
+
         <input
           type="email"
           id="email"
@@ -22,13 +24,14 @@
           placeholder="Digite sua senha"
           required
         />
-        <a href="cadastro/cadastro.html" class="link-conta">Crie sua conta</a>
-        <button type="submit">Entrar</button>
+
+        <a href="/index.html" class="link-conta">Voltar para o login</a>
+        <button type="submit">Criar conta</button>
       </form>
 
       <p id="message"></p>
     </div>
 
-    <script src="script.js"></script>
+    <script src="cadastro.js"></script>
   </body>
 </html>
