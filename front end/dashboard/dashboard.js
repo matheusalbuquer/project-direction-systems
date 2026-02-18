@@ -92,6 +92,23 @@ function abrirModal() {
 
   document.getElementById("modalProduto").style.display = "flex";
 }
+/*Barra de pesquisa */
+const inputPesquisa = document.getElementById("inputPesquisa");
+
+inputPesquisa.addEventListener("input", function () {
+  const valor = inputPesquisa.value.toLowerCase();
+  const produtos = document.querySelectorAll(".card-produto");
+
+  produtos.forEach((produto) => {
+    const nome = produto.querySelector("h3").textContent.toLowerCase();
+
+    if (nome.includes(valor)) {
+      produto.style.display = "block";
+    } else {
+      produto.style.display = "none";
+    }
+  });
+});
 
 /*abri o modal*/
 

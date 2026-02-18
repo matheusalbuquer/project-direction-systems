@@ -1,11 +1,21 @@
-/* RESET */
+/* =========================
+   RESET & BASE
+========================= */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
-  background-color: #f4f6f9;
+  background: linear-gradient(135deg, #f4f6f9, #e9eef3);
   color: #333;
+  letter-spacing: 0.3px;
 }
 
+/* =========================
+   HEADER
+========================= */
 header {
   background: linear-gradient(90deg, #1e9c1e, #167d16);
   padding: 15px 40px;
@@ -30,7 +40,7 @@ header {
 
 .welcome-text {
   font-size: 14px;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .btn-sair {
@@ -41,42 +51,77 @@ header {
   color: white;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.2s ease;
 }
 
 .btn-sair:hover {
   background-color: #c0392b;
+  transform: translateY(-2px);
 }
 
-/*contaoienr*/
-
+/* =========================
+   CONTAINER
+========================= */
 .container {
   padding: 40px;
 }
 
-/*topo*/
-
+/* =========================
+   TOPO
+========================= */
 .topo {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .topo h2 {
   margin: 0;
-  font-size: 24px;
+  font-size: 26px;
+  font-weight: 600;
 }
 
+.acoes-topo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   BARRA DE PESQUISA
+========================= */
+.barra-pesquisa {
+  padding: 10px 18px;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  width: 260px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.barra-pesquisa:focus {
+  outline: none;
+  border-color: #1e9c1e;
+  box-shadow: 0 0 8px rgba(30, 156, 30, 0.25);
+}
+
+/* =========================
+   BOTÃO ADICIONAR
+========================= */
 .btn-adicionar {
   background-color: #1e9c1e;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 22px;
   border-radius: 25px;
   color: white;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.2s ease;
 }
 
 .btn-adicionar:hover {
@@ -84,76 +129,86 @@ header {
   transform: translateY(-2px);
 }
 
-/*prduot*/
-
+/* =========================
+   GRID PRODUTOS
+========================= */
 .grid-produtos {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 25px;
 }
 
+/* =========================
+   CARD PRODUTO
+========================= */
 .card-produto {
   background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
-  transition: 0.3s;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  animation: fadeUp 0.4s ease;
 }
 
 .card-produto:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
 }
 
 .card-produto h3 {
   margin-top: 0;
   margin-bottom: 10px;
+  font-weight: 600;
+  color: #1e9c1e;
 }
 
 .card-produto p {
-  margin: 5px 0;
+  margin: 6px 0;
   font-size: 14px;
 }
 
-/*botaps*/
-
-.btn-editar {
-  background-color: #3498db;
+/* =========================
+   BOTÕES CARD
+========================= */
+.btn-editar,
+.btn-apagar {
   border: none;
-  padding: 7px 14px;
+  padding: 8px 15px;
   border-radius: 8px;
   color: white;
   cursor: pointer;
   margin-top: 12px;
+  transition: all 0.2s ease;
+}
+
+.btn-editar {
+  background-color: #3498db;
   margin-right: 8px;
-  transition: 0.3s;
 }
 
 .btn-editar:hover {
   background-color: #2980b9;
+  transform: translateY(-2px);
 }
 
 .btn-apagar {
   background-color: #e74c3c;
-  border: none;
-  padding: 7px 14px;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-  margin-top: 12px;
-  transition: 0.3s;
 }
 
 .btn-apagar:hover {
   background-color: #c0392b;
+  transform: translateY(-2px);
 }
 
-/*modal */
-
+/* =========================
+   MODAL
+========================= */
 .modal {
   display: none;
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.45);
   justify-content: center;
   align-items: center;
 }
@@ -162,15 +217,17 @@ header {
   background: white;
   padding: 30px;
   border-radius: 20px;
-  width: 380px;
+  width: 400px;
+  max-width: 90%;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
   animation: fadeIn 0.3s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .modal-content h2 {
-  margin-top: 0;
+  margin: 0 0 10px 0;
   text-align: center;
 }
 
@@ -199,6 +256,12 @@ header {
   border-radius: 8px;
   color: white;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-salvar:hover {
+  background-color: #167d16;
+  transform: translateY(-2px);
 }
 
 .btn-cancelar {
@@ -208,15 +271,53 @@ header {
   border-radius: 8px;
   color: white;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cancelar:hover {
+  background-color: #777;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .barra-pesquisa {
+    width: 100%;
+  }
+
+  .acoes-topo {
+    width: 100%;
+    justify-content: space-between;
   }
 }
